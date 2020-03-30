@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module SimpleAuth0Secured
+  # Verifies an Auth0-provided JWT using the Auth0 API
   class JsonWebToken
     def self.verify(token)
       JWT.decode(
