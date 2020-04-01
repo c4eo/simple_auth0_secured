@@ -1,4 +1,10 @@
-require "simple_auth0_secured/version"
+# frozen_string_literal: true
+
+require 'configurations'
+require 'simple_auth0_secured/version'
+require 'simple_auth0_secured/json_web_token'
+require 'simple_auth0_secured/client'
+require 'simple_auth0_secured/secured'
 
 module SimpleAuth0Secured
   include Configurations
@@ -9,5 +15,4 @@ module SimpleAuth0Secured
                :auth0_api_audience
 
   class Error < StandardError; end
-  # Your code goes here...
 end

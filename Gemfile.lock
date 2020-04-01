@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_auth0_secured (0.1.0)
+    simple_auth0_secured (0.3.0)
       activesupport (>= 5.2)
       configurations (~> 2.2.0)
       faraday (~> 0.17)
