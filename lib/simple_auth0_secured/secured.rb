@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'jwt'
-require 'pry'
 
 module SimpleAuth0Secured
   # Provides a module that can be included in Rails controllers to provide

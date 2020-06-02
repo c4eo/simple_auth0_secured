@@ -33,6 +33,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'jwt'
   spec.add_runtime_dependency 'oj', '>= 3.10'
   spec.add_runtime_dependency 'typhoeus'
-
-  spec.add_development_dependency 'pry'
 end

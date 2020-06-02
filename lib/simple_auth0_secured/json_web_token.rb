@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'jwt'
-require 'pry'
 
 module SimpleAuth0Secured
   # Verifies an Auth0-provided JWT using the Auth0 API
