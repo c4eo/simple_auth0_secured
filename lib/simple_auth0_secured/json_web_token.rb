@@ -9,7 +9,7 @@ module SimpleAuth0Secured
         token, nil,
         true, # Verify the signature of this token
         algorithm: 'RS256',
-        iss: "#{auth0_url}/",
+        iss: issuer,
         verify_iss: true,
         aud: SimpleAuth0Secured.configuration.auth0_api_audience,
         verify_aud: true
@@ -39,6 +39,10 @@ module SimpleAuth0Secured
 
     def self.auth0_url
       "https://#{domain}"
+    end
+
+    def self.issuer
+      SimpleAuth0Secured.configuration.auth0_issuer
     end
   end
 end

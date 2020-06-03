@@ -12,7 +12,8 @@ module SimpleAuth0Secured
   not_configured { |c| raise(NoMethodError, "#{c} must be configured") }
 
   configurable :auth0_tenant_domain,
-               :auth0_api_audience
+               :auth0_api_audience,
+               :auth0_issuer
 
   class Error < StandardError; end
 end
