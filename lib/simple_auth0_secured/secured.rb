@@ -23,6 +23,8 @@ module SimpleAuth0Secured
     rescue JWT::VerificationError, JWT::DecodeError => e
       Rails.logger.warn "Could not decode/verify Auth0 JWT: #{e.message}"
       render json: { errors: ['Not Authenticated'] }, status: :unauthorized
+    rescue JWT::ExpiredSignature
+      render json: { errors: ['Token Expired'] }, status: :unauthorized
     end
 
     def http_token
