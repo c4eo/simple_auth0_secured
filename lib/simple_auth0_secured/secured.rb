@@ -2,6 +2,8 @@
 
 require 'jwt'
 
+class Auth0TokenError < StandardError; end
+
 module SimpleAuth0Secured
   # Provides a module that can be included in Rails controllers to provide
   # endpoint security based on the incoming JWT from Auth0
@@ -20,15 +22,10 @@ module SimpleAuth0Secured
 
     def auth0_authenticate_request!
       auth0_client.verify!
-    rescue JWT::ExpiredSignature
-      render(
-        json: { errors: ['Token Expired'] }, status: :unauthorized
-      ) and return
-    rescue JWT::VerificationError, JWT::DecodeError => e
-      Rails.logger.warn "Could not decode/verify Auth0 JWT: #{e.message}"
-      render(
-        json: { errors: ['Invalid Token'] }, status: :unauthorized
-      ) and return
+    rescue StandardError => e
+      msg = 'Token Decode Failure'
+      msg = 'Token Expired' if e.is_a?(JWT::ExpiredSignature)
+      raise Auth0TokenError, msg
     end
 
     def http_token

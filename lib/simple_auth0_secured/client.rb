@@ -2,12 +2,16 @@ require 'jwt'
 
 module SimpleAuth0Secured
   class Client
+    attr_accessor :token_verified
+
     def initialize(token)
       @token = token
+      @token_verified = false
     end
 
     def verify!
       @auth0_user_id = token_decoded.first['sub']
+      @token_verified = true
     end
 
     def user_info
