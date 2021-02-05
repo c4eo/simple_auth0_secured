@@ -14,8 +14,10 @@ module SimpleAuth0Secured
       @token_verified = true
     end
 
-    def user_info
+    def user_info(remove_cache = false)
       ckey = "SA0S_USER_INFO_#{auth0_user_id}"
+      Rails.cache.delete(ckey) if remove_cache
+
       Rails.cache.fetch(ckey, expires_in: expiration_length) do
         Oj.load(Faraday.get(userinfo_url, {}, auth_header).body)
       end
