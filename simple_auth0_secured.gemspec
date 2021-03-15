@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'activesupport', '>= 5.2'
   spec.add_runtime_dependency 'configurations', '~> 2.2.0'
-  spec.add_runtime_dependency 'faraday', '~> 0.17'
+  spec.add_runtime_dependency 'faraday', '~> 1.3'
   spec.add_runtime_dependency 'jwt'
   spec.add_runtime_dependency 'oj', '>= 3.10'
   spec.add_runtime_dependency 'typhoeus'
